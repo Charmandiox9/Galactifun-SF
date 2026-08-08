@@ -39,8 +39,22 @@ public class Electrolyzer extends AContainer {
         registerRecipe(BaseMats.MOON_DUST, Gas.HELIUM.item().asQuantity(3));
     }
 
-    private void registerRecipe(ItemStack in, ItemStack... out) {
-        registerRecipe(10, new ItemStack[]{in}, out);
+    private void registerRecipe(Object in, Object... out) {
+        ItemStack inItem = toItem(in);
+        ItemStack[] outItems = new ItemStack[out.length];
+        for (int i = 0; i < out.length; i++) {
+            outItems[i] = toItem(out[i]);
+        }
+        registerRecipe(10, new ItemStack[]{inItem}, outItems);
+    }
+
+    private static ItemStack toItem(Object obj) {
+        if (obj == null) return null;
+        if (obj instanceof ItemStack is) return is;
+        if (obj instanceof SlimefunItemStack sfi) return sfi.item();
+        if (obj instanceof Material mat) return new ItemStack(mat);
+        if (obj instanceof Gas gas) return gas.item().item();
+        throw new IllegalArgumentException("Unknown item type: " + obj);
     }
 
     @Override

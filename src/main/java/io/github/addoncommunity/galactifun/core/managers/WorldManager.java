@@ -14,7 +14,6 @@ import java.util.UUID;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import lombok.Getter;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -80,8 +79,7 @@ public final class WorldManager implements Listener {
 
     private static final String PLACED = "placed";
 
-    @Getter
-    private final int maxAliensPerPlayer;
+        private final int maxAliensPerPlayer;
     private final Map<World, PlanetaryWorld> spaceWorlds = new HashMap<>();
     private final Map<World, AlienWorld> alienWorlds = new HashMap<>();
     private final YamlConfiguration config;
@@ -303,8 +301,9 @@ public final class WorldManager implements Listener {
             if (item != null && !removePlacedBlock(b)) {
                 e.setDropItems(false);
                 List<ItemStack> drops = new ArrayList<>();
-                drops.add(item.clone());
-                item.getItem().callItemHandler(BlockBreakHandler.class, h -> h.onPlayerBreak(e, item, drops));
+                ItemStack itemStack = item.item().clone();
+                drops.add(itemStack);
+                item.getItem().callItemHandler(BlockBreakHandler.class, h -> h.onPlayerBreak(e, itemStack, drops));
                 for (ItemStack drop : drops) {
                     w.dropItemNaturally(b.getLocation().add(0.5, 0, 0.5), drop);
                 }
@@ -336,7 +335,7 @@ public final class WorldManager implements Listener {
                 SlimefunItemStack item = world.getMappedItem(b);
                 if (item != null && !removePlacedBlock(b)) {
                     blocks.remove();
-                    w.dropItemNaturally(b.getLocation().add(0.5, 0, 0.5), item.clone());
+                    w.dropItemNaturally(b.getLocation().add(0.5, 0, 0.5), item.item().clone());
                     Scheduler.run(() -> b.setType(Material.AIR));
                 }
             }
@@ -416,7 +415,7 @@ public final class WorldManager implements Listener {
                     toBePlaced.setType(Material.ICE);
                 }
             } else if (manager.getEffectAt(l, AtmosphericEffect.HEAT) > 1) {
-                p.getWorld().spawnParticle(Particle.SMOKE_NORMAL, l, 5);
+                p.getWorld().spawnParticle(Particle.SMOKE, l, 5);
             } else {
                 e.setCancelled(false);
             }
@@ -470,5 +469,9 @@ public final class WorldManager implements Listener {
     public boolean removePlacedBlock(Block b) {
         return ChunkStorage.untag(b, PLACED);
     }
+
+
+    public int maxAliensPerPlayer() { return this.maxAliensPerPlayer; }
+    public int getMaxAliensPerPlayer() { return this.maxAliensPerPlayer; }
 
 }

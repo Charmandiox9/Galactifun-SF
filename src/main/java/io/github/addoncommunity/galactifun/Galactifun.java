@@ -6,7 +6,6 @@ import java.util.logging.Level;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import lombok.Getter;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -35,13 +34,11 @@ import io.github.mooy1.infinitylib.core.AbstractAddon;
 import io.github.mooy1.infinitylib.metrics.bukkit.Metrics;
 import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.BlobBuildUpdater;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 
 
 public final class Galactifun extends AbstractAddon {
 
-    @Getter
     private static Galactifun instance;
 
     private boolean isTest = false;
@@ -63,6 +60,10 @@ public final class Galactifun extends AbstractAddon {
 
     public static AlienManager alienManager() {
         return instance.alienManager;
+    }
+
+    public static Galactifun instance() {
+        return instance;
     }
 
     public static WorldManager worldManager() {
@@ -108,9 +109,7 @@ public final class Galactifun extends AbstractAddon {
 
         new Metrics(this, 11613);
 
-        if (!isTest && this.getConfig().getBoolean("auto-update") && !getPluginVersion().contains("MODIFIED")) {
-            new BlobBuildUpdater(this, this.getFile(), "Galactifun").start();
-        }
+        // Auto updater removed for modern standalone builds
 
         this.alienManager = new AlienManager(this);
         this.worldManager = new WorldManager(this);

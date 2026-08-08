@@ -7,13 +7,11 @@ import java.util.Locale;
 
 import javax.annotation.Nonnull;
 
-import lombok.Getter;
-
 import org.bukkit.inventory.ItemStack;
 
 import io.github.addoncommunity.galactifun.api.universe.attributes.Orbit;
 import io.github.addoncommunity.galactifun.api.universe.types.UniversalType;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.addoncommunity.galactifun.util.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChatUtils;
 
 /**
@@ -24,15 +22,10 @@ import io.github.thebusybiscuit.slimefun4.utils.ChatUtils;
 public abstract class UniversalObject {
 
     private final List<UniversalObject> orbiters = new ArrayList<>();
-    @Getter
     private final String name;
-    @Getter
     protected final String id;
-    @Getter
     private final ItemStack item;
-    @Getter
     private final UniversalObject orbiting;
-    @Getter
     private final Orbit orbit;
     protected final int orbitLevel;
 
@@ -85,4 +78,14 @@ public abstract class UniversalObject {
         return this.id.hashCode();
     }
 
+    public String name() { return this.name; }
+    public String getName() { return this.name; }
+    public String id() { return this.id; }
+    public String getId() { return this.id; }
+    public ItemStack item() { return this.item; }
+    public ItemStack getItem() { return this.item; }
+    public UniversalObject orbiting() { return this.orbiting; }
+    public UniversalObject getOrbiting() { return this.orbiting; }
+    public Orbit orbit() { return this.orbit; }
+    public Orbit getOrbit() { return this.orbit; }
 }

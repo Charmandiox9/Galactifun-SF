@@ -4,7 +4,6 @@ import java.util.Random;
 
 import javax.annotation.Nonnull;
 
-import lombok.AllArgsConstructor;
 
 import org.bukkit.Material;
 import org.bukkit.generator.BlockPopulator;
@@ -17,12 +16,16 @@ import org.bukkit.generator.WorldInfo;
  * @author Seggan
  * @author Mooy1
  */
-@AllArgsConstructor
 public class LakePopulator extends BlockPopulator {
 
     private final int maxY;
     @Nonnull
     private final Material liquid;
+
+    public LakePopulator(int maxY, @Nonnull Material liquid) {
+        this.maxY = maxY;
+        this.liquid = liquid;
+    }
 
     @Override
     public void populate(@Nonnull WorldInfo worldInfo, @Nonnull Random random, int cx, int cz, @Nonnull LimitedRegion region) {

@@ -2,8 +2,6 @@ package io.github.addoncommunity.galactifun.api.structures;
 
 import java.util.EnumMap;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -13,7 +11,6 @@ import org.bukkit.block.Block;
  *
  * @author Mooy1
  */
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
 class StructureBlock {
 
     static final StructureBlock AIR = new StructureBlock(Material.AIR) {
@@ -30,6 +27,10 @@ class StructureBlock {
     }
 
     private final Material material;
+
+    StructureBlock(Material material) {
+        this.material = material;
+    }
 
     void paste(Block block, StructureRotation rotation) {
         block.setType(this.material);

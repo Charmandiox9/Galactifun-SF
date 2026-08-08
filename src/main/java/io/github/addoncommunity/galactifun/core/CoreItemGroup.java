@@ -1,6 +1,5 @@
 package io.github.addoncommunity.galactifun.core;
 
-import lombok.experimental.UtilityClass;
 
 import org.bukkit.Material;
 
@@ -11,7 +10,7 @@ import io.github.addoncommunity.galactifun.core.categories.GalacticItemGroup;
 import io.github.mooy1.infinitylib.groups.MultiGroup;
 import io.github.mooy1.infinitylib.groups.SubGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.addoncommunity.galactifun.util.CustomItemStack;
 
 /**
  * Slimefun item categories
@@ -19,8 +18,11 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
  * @author Mooy1
  */
 // TODO move these categories somewhere not public, addons should use their own
-@UtilityClass
 public final class CoreItemGroup {
+
+    private CoreItemGroup() {
+    }
+
 
     /* cheat categories */
     public static final ItemGroup ASSEMBLY = new SubGroup(

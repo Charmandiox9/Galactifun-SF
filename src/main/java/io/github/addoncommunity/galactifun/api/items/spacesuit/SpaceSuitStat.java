@@ -1,12 +1,7 @@
 package io.github.addoncommunity.galactifun.api.items.spacesuit;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import java.util.Objects;
 
-@Getter
-@EqualsAndHashCode
-@RequiredArgsConstructor
 @SuppressWarnings("ClassCanBeRecord")
 public final class SpaceSuitStat {
 
@@ -16,4 +11,23 @@ public final class SpaceSuitStat {
 
     private final String name;
 
+    public SpaceSuitStat(String name) {
+        this.name = name;
+    }
+
+    public String name() { return this.name; }
+    public String getName() { return this.name; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SpaceSuitStat)) return false;
+        SpaceSuitStat that = (SpaceSuitStat) o;
+        return Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 }

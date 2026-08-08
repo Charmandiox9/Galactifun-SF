@@ -4,7 +4,6 @@ import java.util.Random;
 
 import javax.annotation.Nonnull;
 
-import lombok.AllArgsConstructor;
 
 import org.bukkit.Material;
 import org.bukkit.generator.BlockPopulator;
@@ -17,12 +16,17 @@ import org.bukkit.generator.WorldInfo;
  * @author Seggan
  * @author Mooy1
  */
-@AllArgsConstructor
 public class VolcanoPopulator extends BlockPopulator {
 
     private final int minY;
     private final Material belowLiquid;
     private final Material liquid;
+
+    public VolcanoPopulator(int minY, Material belowLiquid, Material liquid) {
+        this.minY = minY;
+        this.belowLiquid = belowLiquid;
+        this.liquid = liquid;
+    }
 
     @Override
     public void populate(@Nonnull WorldInfo worldInfo, @Nonnull Random random, int cx, int cz, @Nonnull LimitedRegion region) {

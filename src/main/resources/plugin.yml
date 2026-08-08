@@ -1,0 +1,17 @@
+name: Galactifun
+version: '${version}'
+main: io.github.addoncommunity.galactifun.Galactifun
+api-version: '1.21'
+description: Advanced space, galaxies, rockets, and astronomy addon for Slimefun4
+authors: [Seggan, Mooy1, GallowsDove, ProfElements, Charmandiox9]
+depend:
+  - Slimefun
+softdepend:
+  - BentoBox
+  - Multiverse-Core
+
+commands:
+  galactifun:
+    description: Galactifun main command
+    usage: /galactifun <subcommand>
+    aliases: [gf, galactic]

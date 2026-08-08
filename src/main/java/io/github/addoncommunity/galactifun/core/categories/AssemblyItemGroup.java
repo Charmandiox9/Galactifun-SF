@@ -18,7 +18,7 @@ import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
 import io.github.thebusybiscuit.slimefun4.core.guide.SlimefunGuide;
 import io.github.thebusybiscuit.slimefun4.core.guide.SlimefunGuideMode;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.addoncommunity.galactifun.util.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 
@@ -69,8 +69,8 @@ public final class AssemblyItemGroup extends FlexItemGroup {
 
         int i = 9;
         for (Map.Entry<ItemStack[], ItemStack> item : AssemblyTable.TYPE.recipes().entrySet()) {
-            if (item.getValue() instanceof SlimefunItemStack slimefunItemStack) {
-                Map.Entry<SlimefunItemStack, ItemStack[]> newEntry = new AbstractMap.SimpleImmutableEntry<>(slimefunItemStack, item.getKey());
+            if (item.getValue() != null) {
+                Map.Entry<ItemStack, ItemStack[]> newEntry = new AbstractMap.SimpleImmutableEntry<>(item.getValue(), item.getKey());
                 menu.addItem(i++, item.getValue(), (p1, slot, item1, action) -> {
                     if (layout == SlimefunGuideMode.CHEAT_MODE) {
                         p1.getInventory().addItem(item1.clone());
@@ -85,8 +85,10 @@ public final class AssemblyItemGroup extends FlexItemGroup {
         menu.open(p);
     }
 
-    private void displayItem(Player p, PlayerProfile profile, Map.Entry<SlimefunItemStack, ItemStack[]> item) {
-        ChestMenu menu = new ChestMenu("Recipe for " + item.getKey().getDisplayName());
+    private void displayItem(Player p, PlayerProfile profile, Map.Entry<ItemStack, ItemStack[]> item) {
+        String displayName = item.getKey().hasItemMeta() && item.getKey().getItemMeta().hasDisplayName() ?
+                item.getKey().getItemMeta().getDisplayName() : item.getKey().getType().name();
+        ChestMenu menu = new ChestMenu("Recipe for " + displayName);
         menu.setEmptySlotsClickable(false);
 
         menu.addItem(0, new CustomItemStack(ChestMenuUtils.getBackButton(p, "",
@@ -109,7 +111,7 @@ public final class AssemblyItemGroup extends FlexItemGroup {
             }
         }
 
-        menu.addItem(18, BaseItems.ASSEMBLY_TABLE, ChestMenuUtils.getEmptyClickHandler());
+        menu.addItem(18, BaseItems.ASSEMBLY_TABLE.item(), ChestMenuUtils.getEmptyClickHandler());
         menu.addItem(26, item.getKey(), ChestMenuUtils.getEmptyClickHandler());
 
         menu.open(p);

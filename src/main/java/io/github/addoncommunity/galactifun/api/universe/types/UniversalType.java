@@ -1,21 +1,22 @@
 package io.github.addoncommunity.galactifun.api.universe.types;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-
 /**
  * Interface for identifying enums in this package
  *
  * @author Mooy1
  */
-@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public class UniversalType {
 
-    @Getter
     private final String id;
-
-    @Getter
     private final String description;
 
+    UniversalType(String id, String description) {
+        this.id = id;
+        this.description = description;
+    }
+
+    public String id() { return this.id; }
+    public String getId() { return this.id; }
+    public String description() { return this.description; }
+    public String getDescription() { return this.description; }
 }

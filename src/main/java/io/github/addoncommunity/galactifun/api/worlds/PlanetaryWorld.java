@@ -7,9 +7,8 @@ import java.util.Set;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import lombok.Getter;
 
-import org.apache.commons.lang.Validate;
+import org.apache.commons.lang3.Validate;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
@@ -45,15 +44,20 @@ public abstract class PlanetaryWorld extends PlanetaryObject {
 
     private static final NamespacedKey WORLD_STORAGE_KEY = Galactifun.createKey("world_storage");
 
-    @Getter
     private World world;
+    public World world() { return this.world; }
+    public World getWorld() { return this.world; }
     private WorldManager worldManager;
-    @Getter
     private SlimefunAddon addon;
+    public SlimefunAddon addon() { return this.addon; }
+    public SlimefunAddon getAddon() { return this.addon; }
     private Marker worldStorage;
 
-    @Getter
     private final Set<GEOResource> resources = new HashSet<>();
+
+    public Set<GEOResource> resources() { return this.resources; }
+    public Set<GEOResource> getResources() { return this.resources; }
+
 
     public PlanetaryWorld(String name, PlanetaryType type, Orbit orbit, StarSystem orbiting, ItemStack baseItem,
                           DayCycle dayCycle, Atmosphere atmosphere, Gravity gravity) {

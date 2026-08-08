@@ -6,9 +6,8 @@ import java.util.Random;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import lombok.Getter;
 
-import org.apache.commons.lang.Validate;
+import org.apache.commons.lang3.Validate;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -38,7 +37,6 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.Persis
  * @author Mooy1
  * @see Martian
  */
-@Getter
 public class Alien<T extends Mob> {
 
     private final Class<T> clazz;
@@ -67,7 +65,7 @@ public class Alien<T extends Mob> {
         PersistentDataAPI.setString(mob, this.alienManager.key(), this.id);
         this.alienManager.addAlien(mob.getUniqueId());
 
-        Objects.requireNonNull(mob.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(this.maxHealth);
+        Objects.requireNonNull(mob.getAttribute(Attribute.MAX_HEALTH)).setBaseValue(this.maxHealth);
         mob.setHealth(this.maxHealth);
         mob.setCustomName(this.name);
         mob.setCustomNameVisible(true);
@@ -159,5 +157,15 @@ public class Alien<T extends Mob> {
     public int hashCode() {
         return this.id.hashCode();
     }
+
+
+    public String id() { return this.id; }
+    public String getId() { return this.id; }
+    public String name() { return this.name; }
+    public String getName() { return this.name; }
+    public double maxHealth() { return this.maxHealth; }
+    public double getMaxHealth() { return this.maxHealth; }
+    public double spawnChance() { return this.spawnChance; }
+    public double getSpawnChance() { return this.spawnChance; }
 
 }

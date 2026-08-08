@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import lombok.Getter;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -58,7 +57,7 @@ import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
 import io.github.thebusybiscuit.slimefun4.core.handlers.BlockUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.RandomizedSet;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.addoncommunity.galactifun.util.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
@@ -75,12 +74,9 @@ public abstract class Rocket extends SlimefunItem implements RecipeDisplayItem {
     private static final List<String> LAUNCH_MESSAGES = Galactifun.instance().getConfig().getStringList("rockets.launch-msgs");
     private static final double DISTANCE_PER_FUEL = 2_000_000 / Util.KM_PER_LY;
 
-    @Getter
-    private final int fuelCapacity;
-    @Getter
-    private final int storageCapacity;
-    @Getter
-    private final Map<String, Double> allowedFuels = new HashMap<>();
+        private final int fuelCapacity;
+        private final int storageCapacity;
+        private final Map<String, Double> allowedFuels = new HashMap<>();
 
     public Rocket(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, int fuelCapacity, int storageCapacity) {
         super(category, item, recipeType, recipe);
@@ -324,4 +320,12 @@ public abstract class Rocket extends SlimefunItem implements RecipeDisplayItem {
 
         return ret;
     }
+
+    public int fuelCapacity() { return this.fuelCapacity; }
+    public int getFuelCapacity() { return this.fuelCapacity; }
+    public int storageCapacity() { return this.storageCapacity; }
+    public int getStorageCapacity() { return this.storageCapacity; }
+    public Map<String, Double> allowedFuels() { return this.allowedFuels; }
+    public Map<String, Double> getAllowedFuelsMap() { return this.allowedFuels; }
+
 }

@@ -2,7 +2,6 @@ package io.github.addoncommunity.galactifun.base;
 
 import java.util.Arrays;
 
-import lombok.experimental.UtilityClass;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -23,7 +22,7 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
 import io.github.thebusybiscuit.slimefun4.implementation.items.electric.machines.HeatedPressureChamber;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.addoncommunity.galactifun.util.CustomItemStack;
 
 /**
  * A class containing commonly used items in recipes
@@ -31,8 +30,11 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
  * @author Seggan
  * @author Mooy1
  */
-@UtilityClass
 public final class BaseMats {
+
+    private BaseMats() {
+    }
+
 
     //<editor-fold desc="Generated Blocks" defaultstate="collapsed">
     public static final SlimefunItemStack MOON_DUST = new SlimefunItemStack(
@@ -330,17 +332,17 @@ public final class BaseMats {
         component(SPACE_GRADE_PLATE, RecipeType.HEATED_PRESSURE_CHAMBER, HEAVY_DUTY_SHEET, TUNGSTEN_CARBIDE);
         ((HeatedPressureChamber) SlimefunItems.HEATED_PRESSURE_CHAMBER.getItem()).registerRecipe(
                 20,
-                new ItemStack[]{ HEAVY_DUTY_SHEET, TUNGSTEN_CARBIDE},
-                new ItemStack[]{ SPACE_GRADE_PLATE }
+                new ItemStack[]{ HEAVY_DUTY_SHEET.item(), TUNGSTEN_CARBIDE.item() },
+                new ItemStack[]{ SPACE_GRADE_PLATE.item() }
         );
         ((HeatedPressureChamber) SlimefunItems.HEATED_PRESSURE_CHAMBER_2.getItem()).registerRecipe(
                 20,
-                new ItemStack[]{ HEAVY_DUTY_SHEET, TUNGSTEN_CARBIDE},
-                new ItemStack[]{ SPACE_GRADE_PLATE }
+                new ItemStack[]{ HEAVY_DUTY_SHEET.item(), TUNGSTEN_CARBIDE.item() },
+                new ItemStack[]{ SPACE_GRADE_PLATE.item() }
         );
         component(ULTRA_DUTY_SHEET, RecipeType.COMPRESSOR, new SlimefunItemStack(SPACE_GRADE_PLATE, 4));
-        component(GOLD_FOIL, RecipeType.COMPRESSOR, 4, SlimefunItems.GOLD_24K_BLOCK);
-        component(REINFORCED_CHANNEL, RecipeType.ENHANCED_CRAFTING_TABLE, 8,
+        outputComponent(GOLD_FOIL, RecipeType.COMPRESSOR, 4, SlimefunItems.GOLD_24K_BLOCK);
+        outputComponent(REINFORCED_CHANNEL, RecipeType.ENHANCED_CRAFTING_TABLE, 8,
                 ALUMINUM_COMPOSITE_SHEET, null, ALUMINUM_COMPOSITE_SHEET,
                 ALUMINUM_COMPOSITE_SHEET, null, ALUMINUM_COMPOSITE_SHEET,
                 ALUMINUM_COMPOSITE_SHEET, null, ALUMINUM_COMPOSITE_SHEET
@@ -350,7 +352,7 @@ public final class BaseMats {
                 SlimefunItems.STEEL_INGOT, SlimefunItems.STEEL_INGOT, SlimefunItems.STEEL_INGOT,
                 null, SlimefunItems.STEEL_INGOT, null
         );
-        component(NOZZLE, RecipeType.ENHANCED_CRAFTING_TABLE, 2,
+        outputComponent(NOZZLE, RecipeType.ENHANCED_CRAFTING_TABLE, 2,
                 SlimefunItems.STEEL_INGOT, null, SlimefunItems.STEEL_INGOT,
                 SlimefunItems.STEEL_INGOT, null, SlimefunItems.STEEL_INGOT,
                 null, new ItemStack(Material.IRON_TRAPDOOR), null
@@ -365,17 +367,17 @@ public final class BaseMats {
                 NOZZLE, GOLD_FOIL, FILTER,
                 SlimefunItems.ELECTRO_MAGNET, REINFORCED_CHANNEL, FILTER
         );
-        component(SPARK_PLUG, true, RecipeType.ENHANCED_CRAFTING_TABLE,
+        unplaceableComponent(SPARK_PLUG, RecipeType.ENHANCED_CRAFTING_TABLE,
                 null, SlimefunItems.STEEL_PLATE, SlimefunItems.NICKEL_INGOT,
                 SlimefunItems.ALUMINUM_INGOT, null, MUNPOWDER,
                 null, SlimefunItems.STEEL_PLATE, SlimefunItems.NICKEL_INGOT
         );
-        component(SPARK_PLUG_2, true, RecipeType.ENHANCED_CRAFTING_TABLE,
+        unplaceableComponent(SPARK_PLUG_2, RecipeType.ENHANCED_CRAFTING_TABLE,
                 null, SlimefunItems.STEEL_PLATE, SlimefunItems.NICKEL_INGOT,
                 TUNGSTEN_INGOT, null, MUNPOWDER,
                 null, SlimefunItems.STEEL_PLATE, SlimefunItems.NICKEL_INGOT
         );
-        assembly(ROCKET_ENGINE, true,
+        unplaceableAssembly(ROCKET_ENGINE,
                 null, REINFORCED_CHANNEL, REINFORCED_CHANNEL, REINFORCED_CHANNEL, REINFORCED_CHANNEL, null,
                 null, null, REINFORCED_CHANNEL, REINFORCED_CHANNEL, null, null,
                 null, DIAMOND_CIRCUIT, NOZZLE, NOZZLE, DIAMOND_CIRCUIT, null,
@@ -383,7 +385,7 @@ public final class BaseMats {
                 SlimefunItems.REINFORCED_PLATE, null, null, null, null, SlimefunItems.REINFORCED_PLATE,
                 SlimefunItems.REINFORCED_PLATE, null, null, null, null, SlimefunItems.REINFORCED_PLATE
         );
-        assembly(ROCKET_ENGINE_2, true,
+        unplaceableAssembly(ROCKET_ENGINE_2,
                 null, REINFORCED_CHANNEL, REINFORCED_CHANNEL, REINFORCED_CHANNEL, REINFORCED_CHANNEL, null,
                 null, null, REINFORCED_CHANNEL, REINFORCED_CHANNEL, null, null,
                 null, DIAMOND_CIRCUIT, NOZZLE, NOZZLE, DIAMOND_CIRCUIT, null,
@@ -391,7 +393,7 @@ public final class BaseMats {
                 SlimefunItems.REINFORCED_PLATE, null, null, null, null, SlimefunItems.REINFORCED_PLATE,
                 SlimefunItems.REINFORCED_PLATE, null, null, null, null, SlimefunItems.REINFORCED_PLATE
         );
-        assembly(ROCKET_ENGINE_3, true,
+        unplaceableAssembly(ROCKET_ENGINE_3,
                 null, REINFORCED_CHANNEL, REINFORCED_CHANNEL, REINFORCED_CHANNEL, REINFORCED_CHANNEL, null,
                 null, null, REINFORCED_CHANNEL, REINFORCED_CHANNEL, null, null,
                 null, DIAMOND_CIRCUIT, NOZZLE, NOZZLE, DIAMOND_CIRCUIT, null,
@@ -399,7 +401,7 @@ public final class BaseMats {
                 SPACE_GRADE_PLATE, null, null, null, null, SPACE_GRADE_PLATE,
                 SPACE_GRADE_PLATE, null, null, null, null, SPACE_GRADE_PLATE
         );
-        assembly(ION_ENGINE, true,
+        unplaceableAssembly(ION_ENGINE,
                 SlimefunItems.SOLAR_GENERATOR_4, REINFORCED_CHANNEL, REINFORCED_CHANNEL, REINFORCED_CHANNEL, REINFORCED_CHANNEL, SlimefunItems.SOLAR_GENERATOR_4,
                 null, null, REINFORCED_CHANNEL, REINFORCED_CHANNEL, null, null,
                 null, DIAMOND_CIRCUIT, NOZZLE, NOZZLE, DIAMOND_CIRCUIT, null,
@@ -420,7 +422,7 @@ public final class BaseMats {
                 SlimefunItems.STEEL_INGOT, ADVANCED_PROCESSING_UNIT, REINFORCED_CHANNEL, REINFORCED_CHANNEL, ADVANCED_PROCESSING_UNIT, SlimefunItems.STEEL_INGOT,
                 SlimefunItems.STEEL_INGOT, SlimefunItems.STEEL_INGOT, REINFORCED_CHANNEL, REINFORCED_CHANNEL, SlimefunItems.STEEL_INGOT, SlimefunItems.STEEL_INGOT
         );
-        assembly(NOSE_CONE, true,
+        unplaceableAssembly(NOSE_CONE,
                 null, null, new ItemStack(Material.REDSTONE_TORCH), new ItemStack(Material.REDSTONE_TORCH), null, null,
                 null, null, ALUMINUM_COMPOSITE, ALUMINUM_COMPOSITE, null, null,
                 null, ALUMINUM_COMPOSITE, GLOWSTONE_CIRCUIT, GLOWSTONE_CIRCUIT, ALUMINUM_COMPOSITE, null,
@@ -460,12 +462,12 @@ public final class BaseMats {
         );
 
         component(BLISTERING_VOLCANIC_INGOT, DiamondAnvil.TYPE, VOLCANIC_INGOT, SlimefunItems.BLISTERING_INGOT_3);
-        new UnplaceableBlock(CoreItemGroup.ITEMS, FUSION_PELLET, DiamondAnvil.TYPE, new ItemStack[] {
+        new UnplaceableBlock(CoreItemGroup.ITEMS, FUSION_PELLET, DiamondAnvil.TYPE, recipe(
                 BLISTERING_VOLCANIC_INGOT, new SlimefunItemStack(MOON_DUST, 8)
-        }, new SlimefunItemStack(FUSION_PELLET, 8)).register(Galactifun.instance());
+        ), new SlimefunItemStack(FUSION_PELLET, 8).item()).register(Galactifun.instance());
 
-        component(LASERITE_DUST, true, RecipeType.ORE_CRUSHER, LASERITE_ORE);
-        component(LASERITE, DiamondAnvil.TYPE, new SlimefunItemStack(LASERITE_DUST, 12));
+        unplaceableComponent(LASERITE_DUST, RecipeType.ORE_CRUSHER, LASERITE_ORE);
+        component(LASERITE, DiamondAnvil.TYPE, new SlimefunItemStack(LASERITE_DUST, 12).item());
 
         new MoonCheese(CoreItemGroup.ITEMS, MOON_CHEESE, CoreRecipeType.WORLD_GEN, new ItemStack[]{
                 BaseUniverse.THE_MOON.item()
@@ -476,54 +478,68 @@ public final class BaseMats {
         // SlimefunWarfare integration
         SlimefunItem diode = SlimefunItem.getById("LASER_DIODE");
         if (diode != null) {
-            DiamondAnvil.TYPE.register(new ItemStack[] { diode.getItem().asQuantity(12), null }, LASERITE);
+            DiamondAnvil.TYPE.register(new ItemStack[] { diode.getItem().asQuantity(12), null }, LASERITE.item());
         }
 
         RecipeType.GRIND_STONE.register(
-                Arrays.copyOf(new ItemStack[] { SULFUR_BLOCK }, 9),
-                new SlimefunItemStack(SlimefunItems.SULFATE, 9)
+                Arrays.copyOf(new ItemStack[] { SULFUR_BLOCK.item() }, 9),
+                new SlimefunItemStack(SlimefunItems.SULFATE, 9).item()
         );
         RecipeType.GRIND_STONE.register(
-                Arrays.copyOf(new ItemStack[] { MARS_ROCK }, 9),
-                new SlimefunItemStack(MARS_DUST, 4)
+                Arrays.copyOf(new ItemStack[] { MARS_ROCK.item() }, 9),
+                new SlimefunItemStack(MARS_DUST, 4).item()
         );
         RecipeType.GRIND_STONE.register(
-                Arrays.copyOf(new ItemStack[] { MOON_ROCK }, 9),
-                new SlimefunItemStack(MOON_DUST, 4)
+                Arrays.copyOf(new ItemStack[] { MOON_ROCK.item() }, 9),
+                new SlimefunItemStack(MOON_DUST, 4).item()
         );
 
         RecipeType.SMELTERY.register(
-                Arrays.copyOf(new ItemStack[] { METHANE_ICE }, 9),
-                new SlimefunItemStack(Gas.METHANE.item(), 4)
+                Arrays.copyOf(new ItemStack[] { METHANE_ICE.item() }, 9),
+                new SlimefunItemStack(Gas.METHANE.item(), 4).item()
         );
     }
 
-    private static void component(SlimefunItemStack item, boolean unplaceable, RecipeType type, ItemStack... recipe) {
-        if (unplaceable) {
-            new UnplaceableBlock(CoreItemGroup.COMPONENTS, item, type, recipe).register(Galactifun.instance());
-        } else {
-            new SlimefunItem(CoreItemGroup.COMPONENTS, item, type, recipe).register(Galactifun.instance());
+    private static ItemStack item(Object obj) {
+        if (obj == null) return null;
+        if (obj instanceof ItemStack is) return is;
+        if (obj instanceof SlimefunItemStack sfi) return sfi.item();
+        if (obj instanceof Material mat) return new ItemStack(mat);
+        if (obj instanceof Gas gas) return gas.item().item();
+        throw new IllegalArgumentException("Unknown item type: " + obj);
+    }
+
+    private static ItemStack[] recipe(Object... inputs) {
+        ItemStack[] result = new ItemStack[inputs.length];
+        for (int i = 0; i < inputs.length; i++) {
+            result[i] = item(inputs[i]);
         }
+        return result;
     }
 
-    private static void component(SlimefunItemStack item, RecipeType type, ItemStack... recipe) {
-        component(item, false, type, recipe);
+    private static void unplaceableComponent(SlimefunItemStack item, RecipeType type, Object... inputs) {
+        ItemStack[] recipe = recipe(inputs);
+        new UnplaceableBlock(CoreItemGroup.COMPONENTS, item, type, recipe).register(Galactifun.instance());
     }
 
-    private static void component(SlimefunItemStack item, RecipeType type, int output, ItemStack... recipe) {
-        new SlimefunItem(CoreItemGroup.COMPONENTS, item, type, recipe, new SlimefunItemStack(item, output)).register(Galactifun.instance());
+    private static void component(SlimefunItemStack item, RecipeType type, Object... inputs) {
+        ItemStack[] recipe = recipe(inputs);
+        new SlimefunItem(CoreItemGroup.COMPONENTS, item, type, recipe).register(Galactifun.instance());
     }
 
-    private static void assembly(SlimefunItemStack item, boolean unplaceable, ItemStack... recipe) {
-        if (unplaceable) {
-            new UnplaceableBlock(CoreItemGroup.ITEMS, item, AssemblyTable.TYPE, recipe).register(Galactifun.instance());
-        } else {
-            new SlimefunItem(CoreItemGroup.ITEMS, item, AssemblyTable.TYPE, recipe).register(Galactifun.instance());
-        }
+    private static void outputComponent(SlimefunItemStack item, RecipeType type, int output, Object... inputs) {
+        ItemStack[] recipe = recipe(inputs);
+        new SlimefunItem(CoreItemGroup.COMPONENTS, item, type, recipe, new SlimefunItemStack(item, output).item()).register(Galactifun.instance());
     }
 
-    private static void assembly(SlimefunItemStack item, ItemStack... recipe) {
-        assembly(item, false, recipe);
+    private static void unplaceableAssembly(SlimefunItemStack item, Object... inputs) {
+        ItemStack[] recipe = recipe(inputs);
+        new UnplaceableBlock(CoreItemGroup.ITEMS, item, AssemblyTable.TYPE, recipe).register(Galactifun.instance());
+    }
+
+    private static void assembly(SlimefunItemStack item, Object... inputs) {
+        ItemStack[] recipe = recipe(inputs);
+        new SlimefunItem(CoreItemGroup.ITEMS, item, AssemblyTable.TYPE, recipe).register(Galactifun.instance());
     }
 
     private static void worldItem(SlimefunItemStack item, AlienWorld... worlds) {

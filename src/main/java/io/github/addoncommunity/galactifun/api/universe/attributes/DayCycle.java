@@ -2,11 +2,10 @@ package io.github.addoncommunity.galactifun.api.universe.attributes;
 
 import javax.annotation.Nonnull;
 
-import lombok.Getter;
 
 import org.bukkit.GameRule;
 import org.bukkit.World;
-import org.apache.commons.lang.Validate;
+import org.apache.commons.lang3.Validate;
 
 /**
  * Represents the amount of sunlight a celestial object s
@@ -44,8 +43,7 @@ public final class DayCycle {
         return new DayCycle(days + hours / 24, hours % 24);
     }
 
-    @Getter
-    @Nonnull
+        @Nonnull
     private final String description;
     private final long startTime;
     private final long perFiveSeconds;
@@ -102,4 +100,7 @@ public final class DayCycle {
         }
     }
 
+
+    public String description() { return this.description; }
+    public String getDescription() { return this.description; }
 }

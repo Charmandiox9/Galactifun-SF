@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import lombok.Getter;
 
 import org.bukkit.GameRule;
 import org.bukkit.World;
@@ -22,7 +21,6 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Randomized
  *
  * @author Mooy1
  */
-@Getter
 @ParametersAreNonnullByDefault
 public final class Atmosphere {
 
@@ -136,5 +134,29 @@ public final class Atmosphere {
 
         return builder;
     }
+
+
+    public double pressure() { return this.pressure; }
+    public double getPressure() { return this.pressure; }
+    public World.Environment environment() { return this.environment; }
+    public World.Environment getEnvironment() { return this.environment; }
+    public int growthAttempts() { return this.growthAttempts; }
+    public int getGrowthAttempts() { return this.growthAttempts; }
+    public Map<AtmosphericEffect, Integer> effects() { return this.effects; }
+    public Map<AtmosphericEffect, Integer> getEffects() { return this.effects; }
+
+    public boolean isWeatherEnabled() { return this.weatherEnabled; }
+    public boolean weatherEnabled() { return this.weatherEnabled; }
+    public boolean isStorming() { return this.storming; }
+    public boolean storming() { return this.storming; }
+    public boolean isThundering() { return this.thundering; }
+    public boolean thundering() { return this.thundering; }
+    public boolean isFlammable() { return this.flammable; }
+    public boolean flammable() { return this.flammable; }
+    public Map<Gas, Double> getComposition() { return this.composition; }
+    public Map<Gas, Double> composition() { return this.composition; }
+    public RandomizedSet<Gas> getWeightedCompositionSet() { return this.weightedCompositionSet; }
+    public RandomizedSet<Gas> weightedCompositionSet() { return this.weightedCompositionSet; }
+
 
 }
