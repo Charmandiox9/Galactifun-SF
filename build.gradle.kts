@@ -13,7 +13,7 @@ repositories {
 }
 
 group = "io.github.addoncommunity.galactifun"
-version = "1.21.0-SNAPSHOT"
+version = "1.21.0"
 description = "Galactifun"
 
 dependencies {
@@ -48,7 +48,7 @@ tasks.processResources {
 
 tasks.shadowJar {
     archiveClassifier.set("")
-    archiveFileName.set("Galactifun-1.21.0.jar")
+    archiveFileName.set("Galactifun-${project.version}.jar")
     relocate("io.github.mooy1.infinitylib", "io.github.addoncommunity.galactifun.infinitylib")
     relocate("org.apache.commons.lang3", "io.github.addoncommunity.galactifun.commons.lang3")
     relocate("org.apache.commons.codec", "io.github.addoncommunity.galactifun.commons.codec")
